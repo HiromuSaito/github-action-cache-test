@@ -44,7 +44,8 @@ jobs:
       - name: Build Postgres image with cache
         uses: docker/build-push-action@v5
         with:
-          context: docker/postgresql
+          context: docker
+          dockerfile: docker/postgresql/Dockerfile
           tags: postgres-custom:latest
           push: false
           cache-from: type=local,src=/tmp/.buildx-cache-postgres
