@@ -1,0 +1,19 @@
+2025-06-02 09:14:46.813 UTC [49] LOG:  starting PostgreSQL 15.2 (Debian 15.2-1.pgdg110+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+2025-06-02 09:14:46.813 UTC [49] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-06-02 09:14:46.815 UTC [53] LOG:  database system was shut down at 2025-06-02 09:14:46 UTC
+2025-06-02 09:14:46.817 UTC [49] LOG:  database system is ready to accept connections
+2025-06-02 09:14:46.931 UTC [59] LOG:  connection received: host=[local]
+2025-06-02 09:14:46.932 UTC [59] LOG:  connection authorized: user=test_user database=postgres application_name=psql
+2025-06-02 09:14:46.934 UTC [59] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'test' ;
+2025-06-02 09:14:46.934 UTC [59] LOG:  disconnection: session time: 0:00:00.003 user=test_user database=postgres host=[local]
+2025-06-02 09:14:46.948 UTC [61] LOG:  connection received: host=[local]
+2025-06-02 09:14:46.948 UTC [61] LOG:  connection authorized: user=test_user database=postgres application_name=psql
+2025-06-02 09:14:46.949 UTC [61] LOG:  statement: CREATE DATABASE "test" ;
+2025-06-02 09:14:46.969 UTC [61] LOG:  disconnection: session time: 0:00:00.021 user=test_user database=postgres host=[local]
+2025-06-02 09:14:46.970 UTC [49] LOG:  received fast shutdown request
+2025-06-02 09:14:46.971 UTC [49] LOG:  aborting any active transactions
+2025-06-02 09:14:46.972 UTC [49] LOG:  background worker "logical replication launcher" (PID 56) exited with exit code 1
+2025-06-02 09:14:46.972 UTC [51] LOG:  shutting down
+2025-06-02 09:14:46.972 UTC [51] LOG:  checkpoint starting: shutdown immediate
+2025-06-02 09:14:46.995 UTC [51] LOG:  checkpoint complete: wrote 918 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.011 s, sync=0.011 s, total=0.024 s; sync files=250, longest=0.005 s, average=0.001 s; distance=4217 kB, estimate=4217 kB
+2025-06-02 09:14:46.997 UTC [49] LOG:  database system is shut down

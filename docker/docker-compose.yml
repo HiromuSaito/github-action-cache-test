@@ -3,7 +3,7 @@ version: "3.8"
 services:
   localstack:
     build:
-      dockerfile: ./localstack/Dockerfile
+      context: ./localstack
     init: true
     ports: [4566:4566]
     environment:
@@ -14,7 +14,7 @@ services:
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
     build:
-      dockerfile: ./postgresql/Dockerfile
+      context: ./postgresql
     ports: [61001:61001]
     command: >-
       -p 61001
@@ -25,6 +25,6 @@ services:
       -c 'log_destination=stderr'
       -c 'log_directory=/var/lib/postgresql/logs'
     volumes: 
-      - ./postgresql/logs:/var/lib/postgresql/logs
-      - ./postgresql/init_sql:/docker-entrypoint-initdb.d
-      - ./postgresql/postgresql.conf:/var/lib/postgresql/data/postgresql.conf:ro
+      - ./logs:/var/lib/postgresql/logs
+      - ./init_sql:/docker-entrypoint-initdb.d
+      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf:ro
