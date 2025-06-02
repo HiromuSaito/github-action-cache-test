@@ -20,11 +20,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Cache Docker layers
+      - name: Cache Localstack layers
         uses: actions/cache@v4
         with:
-          path: /tmp/.buildx-cache
-          key: buildx-${{ github.ref }}-${{ hashFiles('docker/localstack/**') }}
+          path: /tmp/.buildx-cache-localstack
+          key: buildx-localstack-${{ github.ref }}-${{ hashFiles('docker/localstack/**') }}
+
+      - name: Cache Postgres layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache-postgres
+          key: buildx-postgres-${{ github.ref }}-${{ hashFiles('docker/postgresql/**') }}
 
       - name: Build Localstack image with cache
         uses: docker/build-push-action@v5
@@ -32,8 +38,17 @@ jobs:
           context: docker/localstack
           tags: localstack-custom:latest
           push: false
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
+          cache-from: type=local,src=/tmp/.buildx-cache-localstack
+          cache-to: type=local,dest=/tmp/.buildx-cache-localstack
+
+      - name: Build Postgres image with cache
+        uses: docker/build-push-action@v5
+        with:
+          context: docker/postgresql
+          tags: postgres-custom:latest
+          push: false
+          cache-from: type=local,src=/tmp/.buildx-cache-postgres
+          cache-to: type=local,dest=/tmp/.buildx-cache-postgres
 
       - name: docker-compose up
         working-directory: docker
