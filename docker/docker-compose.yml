@@ -14,7 +14,7 @@ services:
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
     build:
-      dockerfile: ./postgresql/Dockerfile.pg
+      dockerfile: ./postgresql/Dockerfile
     ports: [61001:61001]
     command: >-
       -p 61001
