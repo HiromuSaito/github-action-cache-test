@@ -40,4 +40,4 @@ jobs:
         run: docker compose up -d
 
       - name: Check Localstack container status
-        run: docker ps
+        run: docker ps -a
