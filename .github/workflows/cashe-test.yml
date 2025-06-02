@@ -35,8 +35,8 @@ jobs:
       - name: Build Localstack image with cache
         uses: docker/build-push-action@v5
         with:
-          context: "{{defaultContext}}/docker"
-          dockerfile: localstack/Dockerfile
+          context: docker
+          file: localstack/Dockerfile
           tags: localstack-custom:latest
           push: false
           cache-from: type=local,src=/tmp/.buildx-cache-localstack
