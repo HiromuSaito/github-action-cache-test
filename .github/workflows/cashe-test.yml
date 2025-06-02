@@ -35,8 +35,7 @@ jobs:
       - name: Build Localstack image with cache
         uses: docker/build-push-action@v5
         with:
-          context: docker
-          file: localstack/Dockerfile
+          context: docker/localstack
           tags: localstack-custom:latest
           push: false
           cache-from: type=local,src=/tmp/.buildx-cache-localstack
@@ -48,8 +47,7 @@ jobs:
       - name: Build Postgres image with cache
         uses: docker/build-push-action@v5
         with:
-          context: docker
-          file: postgresql/Dockerfile
+          context: docker/postgresql
           tags: postgres-custom:latest
           push: false
           cache-from: type=local,src=/tmp/.buildx-cache-postgres
