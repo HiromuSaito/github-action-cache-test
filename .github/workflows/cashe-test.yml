@@ -18,4 +18,8 @@ jobs:
           fetch-depth: 0
 
       - name: echo
-        run: echo "This is a test for caching"
+        run: echo "CACHE Test Started"
+
+      - name: build
+        working-directory: docker
+        run: docker compose up
