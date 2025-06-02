@@ -36,6 +36,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: docker/localstack
+          file: ./Dockerfile
           tags: localstack-custom:latest
           push: false
           cache-from: type=local,src=/tmp/.buildx-cache-localstack
