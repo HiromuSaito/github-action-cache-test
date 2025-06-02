@@ -41,6 +41,9 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache-localstack
           cache-to: type=local,dest=/tmp/.buildx-cache-localstack
 
+      - name: List docker/postgresql directory
+        run: ls -l docker/postgresql
+
       - name: Build Postgres image with cache
         uses: docker/build-push-action@v5
         with:
