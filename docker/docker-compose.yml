@@ -3,7 +3,7 @@ version: "3.8"
 services:
   localstack:
     build:
-      context: ./localstack
+      dockerfile: ./localstack/Dockerfile
     init: true
     ports: [4566:4566]
     environment:
